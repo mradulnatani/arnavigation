@@ -6,10 +6,10 @@ import { useState } from "react"
 import Link from "next/link"
 import { getSupabaseBrowser } from "@/lib/supabase/client"
 
-export default function SignInPage() {
+export default function SignUpPage() {
   const [loading, setLoading] = useState<string | null>(null)
 
-  async function doSignIn(provider: "google" | "github") {
+  async function doSignUp(provider: "google" | "github") {
     const supabase = getSupabaseBrowser()
     try {
       setLoading(provider)
@@ -38,17 +38,17 @@ export default function SignInPage() {
           </Link>
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-semibold mb-2">Welcome back</h1>
+        <h1 className="text-2xl md:text-3xl font-semibold mb-2">Create an account</h1>
         <p className="text-sm text-muted-foreground mb-6">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="text-orange-400 hover:underline">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/signin" className="text-orange-400 hover:underline">
+            Sign in
           </Link>
         </p>
 
         <div className="flex flex-col gap-3">
           <Button
-            onClick={() => doSignIn("google")}
+            onClick={() => doSignUp("google")}
             disabled={loading !== null}
             className="w-full bg-orange-500 hover:bg-orange-600 text-white"
           >
@@ -59,7 +59,7 @@ export default function SignInPage() {
             )}
             Continue with Google
           </Button>
-          <Button variant="outline" onClick={() => doSignIn("github")} disabled={loading !== null} className="w-full">
+          <Button variant="outline" onClick={() => doSignUp("github")} disabled={loading !== null} className="w-full">
             {loading === "github" ? (
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
             ) : (
@@ -70,9 +70,6 @@ export default function SignInPage() {
         </div>
 
         <div className="mt-6 text-xs text-muted-foreground flex items-center justify-between">
-          <Link href="#" className="hover:underline">
-            Forgot your password?
-          </Link>
           <Link href="/dashboard" className="underline underline-offset-2">
             Continue as guest
           </Link>
@@ -81,4 +78,3 @@ export default function SignInPage() {
     </main>
   )
 }
-
