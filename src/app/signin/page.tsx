@@ -27,18 +27,30 @@ export default function SignInPage() {
 
   return (
     <main className="min-h-screen grid place-items-center px-4">
-      <div className="w-full max-w-md rounded-xl border border-border/50 p-6 bg-card">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="h-8 w-8 rounded-md bg-primary/10 border border-primary/20 grid place-items-center text-primary font-semibold">
-            V
+      <div className="w-full max-w-md rounded-xl border border-border/50 p-8 bg-card shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-md bg-orange-500/15 border border-orange-500/30 grid place-items-center text-orange-500 font-semibold">
+              AR
+            </div>
+            <span className="font-semibold">AR Nav</span>
           </div>
-          <h1 className="text-xl font-semibold">Sign in to Void</h1>
+          <Link href="/" className="text-xs text-muted-foreground hover:underline">
+            Back to site
+          </Link>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-6">Continue with an OAuth provider to access the dashboard.</p>
+        <h1 className="text-2xl md:text-3xl font-semibold mb-2">Welcome back</h1>
+        <p className="text-sm text-muted-foreground mb-6">
+          Don&apos;t have an account? <span className="text-orange-400">Sign up</span>
+        </p>
 
         <div className="flex flex-col gap-3">
-          <Button onClick={() => doSignIn("google")} disabled={loading !== null} className="w-full">
+          <Button
+            onClick={() => doSignIn("google")}
+            disabled={loading !== null}
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+          >
             {loading === "google" ? (
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
             ) : (
@@ -57,7 +69,9 @@ export default function SignInPage() {
         </div>
 
         <div className="mt-6 text-xs text-muted-foreground flex items-center justify-between">
-          <span>Problems signing in?</span>
+          <Link href="#" className="hover:underline">
+            Forgot your password?
+          </Link>
           <Link href="/dashboard" className="underline underline-offset-2">
             Continue as guest
           </Link>
@@ -66,3 +80,4 @@ export default function SignInPage() {
     </main>
   )
 }
+
