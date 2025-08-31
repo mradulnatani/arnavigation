@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="relative">
           {/* If you want to embed your screenshot hero, replace src below with the provided Source URL */}
           <Image
-            src={"/placeholder.svg?height=420&width=720&query=3D%20AR%20city%20navigation%20map%20visual"}
+            src={"/hero.jpeg"}
             alt="AR Nav hero visual"
             width={720}
             height={420}
@@ -193,7 +193,7 @@ function FeatureCard({
   return (
     <div className="rounded-xl border border-border/50 p-5 bg-card">
       <div className="flex items-center gap-2 mb-2">
-        <div className="h-8 w-8 rounded-md bg-primary/10 grid place-items-center">{icon}</div>
+        <div className="rounded-md bg-primary/10">{icon}</div>
         <h3 className="font-semibold">{title}</h3>
       </div>
       <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
