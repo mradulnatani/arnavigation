@@ -1,14 +1,25 @@
 "use client"
 
 import type React from "react"
-
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useSearchParams } from "next/navigation"
+import { useEffect } from "react"
+import { Toaster, toast } from "sonner"
+
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 
 export default function HomePage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const error = searchParams.get("error")
+    if (error === "auth") {
+      toast.error("Authentication failed. Please try again.")
+    }
+  }, [searchParams])
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Header */}
